@@ -1,2 +1,16 @@
 # Fan-Manager
 Python Fan Manager for Servers
+
+#Dependancies
+ipmitool
+
+#Install
+move fan-manager.service to /etc/systemd/system
+
+systemctl daemon-reload
+systemctl enable fan-manager.service
+systemctl start fan-manager.service
+
+# Tested on 
+Dell R720, R720XD
+
