@@ -1,0 +1,11 @@
+[Unit]
+Description=Fan Manager Service
+
+[Service]
+Type=simple
+WorkingDirectory=/root/fan-manager
+ExecStart=/usr/bin/python3 /root/fan-manager/fan-manager.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
