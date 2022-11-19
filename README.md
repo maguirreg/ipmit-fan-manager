@@ -1,10 +1,11 @@
 # Fan-Manager
 Python Fan Manager for Servers
 
-#Dependancies
+# Dependancies
 ipmitool
+python3
 
-#Install
+# Install
 move fan-manager.service to /etc/systemd/system
 
 systemctl daemon-reload
