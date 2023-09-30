@@ -9,9 +9,9 @@ python3
 move fan-manager.service to /etc/systemd/system
 
 systemctl daemon-reload
-systemctl enable fan-manager.service
+systemctl enable /etc/systemd/system/fan-manager.service
 systemctl start fan-manager.service
 
 # Tested on 
-Dell R720, R720XD
+Dell R720, R720XD, R730XD
 
