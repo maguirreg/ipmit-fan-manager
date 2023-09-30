@@ -3,8 +3,8 @@ Description=Fan Manager Service
 
 [Service]
 Type=simple
-WorkingDirectory=/root/fan-manager
-ExecStart=/usr/bin/python3 /root/fan-manager/fan-manager.py
+WorkingDirectory=/opt/Fan-Manager
+ExecStart=/usr/bin/python3 /opt/Fan-Manager/fan-manager.py
 Restart=on-failure
 
 [Install]
