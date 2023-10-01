@@ -3,7 +3,7 @@ import time
 import os
 from os.path import exists
 
-
+currentLogFile = ""
 currentSpeed = 0
 manualFanControl = False
 logFile = '/tmp/fan-manager.log'
@@ -14,52 +14,10 @@ recent_list = []                    # length =  recent_list_time / pollinterval
 recent_list_time = 900              # in seconds
 
 ## Temp : fanspeed % in hexadecimal 
-tempMap = {
-    '21': '01',
-    '22': '02',
-    '23': '03',
-    '24': '04',
-    '25': '05',
-    '26': '06',
-    '27': '07',
-    '28': '08',
-    '29': '09',
-    '30': '0a',
-    '31': '0b',
-    '32': '0c',
-    '33': '0d',
-    '34': '0e',
-    '35': '0f',
-    '36': '10',
-    '37': '11',
-    '38': '12',
-    '39': '13',
-    '40': '14',
-    '41': '15',
-    '42': '16',
-    '43': '17',
-    '44': '18',
-    '45': '19',
-    '46': '1a',
-    '47': '1b',
-    '48': '1c',
-    '49': '1d',
-    '50': '1e',
-    '51': '1f',
-    '52': '20',
-    '53': '21',
-    '54': '22',
-    '55': '23',
-    '56': '24',
-    '57': '25',
-    '58': '26',
-    '59': '27',
-    '60': '28',
-}
+tempMap = {}
 
 def FanControlSwitch(enable):
     global manualFanControl
-    
     if(enable):
         if(manualFanControl == False):
             cmd = "ipmitool raw 0x30 0x30 0x01 0x00"
@@ -101,13 +59,26 @@ def setFanSpeed(temp, speed):
     cmd = f"ipmitool raw 0x30 0x30 0x02 0xff 0x{speed}"
     os.system(cmd)
 
+def loadTempMap(filePath = './default.tm'):
+    global tempMap
+    if exists(filePath):
+        with open(filePath, 'r') as f:
+            line = f.readline()
+            while line:
+                tempMap.update({line.split(',')[0]: line.split(',')[1].strip('\n')})
+                line = f.readline()
 
 def main():
+    ## Setup Logging
     if (not exists(logFile)):
         fp = open(logFile, 'x')
         fp.close()
     log = open(logFile, 'a')
     log.write("Starting Fan Manager\n")
+
+    loadTempMap()
+
+    ## Set Fan control to manual
     FanControlSwitch(True)
     exit = False
     while (not exit):
