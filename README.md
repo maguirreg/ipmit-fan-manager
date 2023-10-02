@@ -95,8 +95,8 @@ This script is provided under the [GNU General Public License](LICENSE).
 
 ## Author
 
-Original Idea and Implementation done by [lvlegab1te](https://github.com/lvlegab1te/Fan-Manager)
-Adapted and Documented by [maguirreg](https://github.com/maguirreg/ipmit-fan-manager)
+- Original Idea and Implementation done by [lvlegab1te](https://github.com/lvlegab1te/Fan-Manager)
+- Adapted and Documented by [maguirreg](https://github.com/maguirreg/ipmit-fan-manager)
 
 ## Acknowledgments
 
