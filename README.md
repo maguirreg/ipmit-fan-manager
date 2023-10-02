@@ -105,4 +105,3 @@ This script is provided under the [GNU General Public License](LICENSE).
 Feel free to modify and adapt this script according to your needs. If you encounter any issues or have suggestions for improvements, please open an issue in this repository.
 
 Happy cooling!
-```
